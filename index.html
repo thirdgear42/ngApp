@@ -1,11 +1,30 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="sample">
   <head>
     <title>My AngularJS App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="controller/01.js"></script>
   </head>
   <body>
-    <input type="text" ng-model="name" name="" value="">
-    <p>Hello {{name}}</p>
+    <div ng-controller="emp as o">
+      <div class="alert alert-success" role="alert" style="margin:16px;" ng-show="o.added">
+  Name is Added!
+</div>
+<div class="alert alert-danger" role="alert" style="margin:16px;" ng-show="o.removed">
+  Name is removed!
+</div>
+
+    <input  class="form-control" type="text" ng-model="name" name="" value="" style="width:90%; float:left;">
+    <button type="submit" class="btn btn-primary" value="submit" ng-click="o.addName(name)">Submit</button>
+
+<div class="alert alert-success" role="alert" style="margin:16px;">
+  <h4 class="alert-heading">List</h4>
+    <ol>
+      <li ng-repeat="value in o.nameArray"><h5 style="float:left;">{{value}}</h5> <button style="float:left; margin-left: 10px;" type="submit" value="submit" ng-click="o.remove(value)">clear</button><hr/></li>
+    </ol>
+  </div>
+  </div>
   </body>
+
 </html>
